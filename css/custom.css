@@ -63,10 +63,14 @@ ul {
 }
 #contador{
     font-size: 20px;
-    font-weight: 400;
-    color: #741d51;
+    font-weight: 700;
+    color: #fff;
     margin-bottom: 0;
-    
+    background-color: #e44e52;
+    border-radius: 12px;  
+}
+#contador span{
+    padding: 8px;
 }
 .submenu #carrito{
     display: none;

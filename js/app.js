@@ -143,7 +143,7 @@ function vistaContador(sum){
     if(sum > 0){
         const p= document.createElement('span');
     p.innerHTML=` 
-        ${ '+ ' +sum}
+        ${ '+  ' +sum}
     `;
     contador.appendChild(p);
      }   

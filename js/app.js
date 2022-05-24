@@ -3,9 +3,8 @@ const Carrito = document.querySelector('#carrito');
 const tablaDeCarrito = document.querySelector('#lista-carrito tbody');
 const btnVaciarCarrito = document.querySelector('#vaciar-carrito');
 const ListaDeCursos = document.querySelector('#lista-cursos');
+const contador = document.querySelector('#contador');
 let llenandoCarrito = [];
-
-
 
 registrarEvento();
 
@@ -16,6 +15,7 @@ function registrarEvento(){
         llenandoCarrito = [];
          bgWhite ();
          limpiarCarritoPrevio();
+         eliminarVista();
     });
 }
 function seleccionandoCurso(e){
@@ -34,7 +34,7 @@ function eliminarCurso (e){
         llenandoCarrito = llenandoCarrito.filter(cursoParaBorrar => cursoParaBorrar.idDeCurso !== cursoABorrar);
         bgWhite ();   
         generarHtmlEnCarrito();
-       
+        
     };
 }
 
@@ -51,29 +51,30 @@ function leerDatosCursoSeleccionado(cursoSeleccionado){
         //actializar cantidad
         const verCursosExistentes = llenandoCarrito.map(verCursoExistente => {
             if(verCursoExistente.idDeCurso === infoCursoSeleccionado.idDeCurso){
-                verCursoExistente.cantidad++;
+               verCursoExistente.cantidad++
+                 
                 return verCursoExistente;
             }else{
                 return verCursoExistente;
             }
         });
         llenandoCarrito =[...verCursosExistentes];
-       
+        
     }else{
         //agregar curso al carrito
         llenandoCarrito = [...llenandoCarrito, infoCursoSeleccionado];
 
     }
     bgred();   
-   
+
     generarHtmlEnCarrito();
+    
 }
 function bgred (){
     const red = llenandoCarrito.length;
     if(red >= 0){
         const bg = document.querySelector("#img-carrito");
-        bg.style.backgroundColor='#1EAEDB';
-        
+        bg.style.backgroundColor='#1EAEDB';        
     }
 }
 function bgWhite (){
@@ -100,20 +101,50 @@ function generarHtmlEnCarrito(){
             <td>
                 ${precioDeCurso}
             </td>
-            <td>
-                ${cantidad}
+            <td class="cantidad">
+               ${cantidad}
             </td>
             <td>
                 <a href="#" class="borrar-curso" data-id="${cursoComprado.idDeCurso}"> X </a>
             </td>
+            
         `;
-        tablaDeCarrito.appendChild(tr);
 
-    });
+        tablaDeCarrito.appendChild(tr);
+    }); 
+    contadores();
 }
 function limpiarCarritoPrevio(){
     while(tablaDeCarrito.firstChild){
-        const r = tablaDeCarrito.removeChild(tablaDeCarrito.firstChild);
-        
+        const r = tablaDeCarrito.removeChild(tablaDeCarrito.firstChild);               
+    }    
+}
+function eliminarVista(){
+    while(contador.firstChild){
+        const f = contador.removeChild(contador.firstChild);
     }
+}
+function contadores(){
+    let t = llenandoCarrito.map(cantidad=>{
+        let suma = cantidad.cantidad;  
+        return suma;
+    })   
+    const array = t;
+    let sum = 0;
+
+    for (let i = 0; i < array.length; i++) {
+    sum += array[i];
+}
+    eliminarVista();
+    vistaContador(sum);
+}
+
+function vistaContador(sum){
+    if(sum > 0){
+        const p= document.createElement('span');
+    p.innerHTML=` 
+        ${ '+ ' +sum}
+    `;
+    contador.appendChild(p);
+     }   
 }

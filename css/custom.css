@@ -18,6 +18,14 @@ header {
     padding: 40px 0 0 0;
     background: white;
     text-align: center;
+    height: 0 auto;
+    z-index: 999999;
+    margin: 0 auto;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 @media (min-width: 750px) {
     header {
@@ -44,19 +52,21 @@ ul {
     background-size: cover;
     margin-top: 12rem;  
 }
-.header{   
-    height: 0 auto;
-    z-index: 999999;
-    margin: 0 auto;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-    }
 .submenu {
-    position: relative;
+    position: relative;   
+}
+.vista{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+#contador{
+    font-size: 20px;
+    font-weight: 400;
+    color: #741d51;
+    margin-bottom: 0;
+    
 }
 .submenu #carrito{
     display: none;
@@ -65,7 +75,6 @@ ul {
     display: block;
     position: absolute;
     right:0;
-
     top:100%;
     z-index: 1;
     background-color: white;
@@ -165,7 +174,7 @@ margin-bottom: 10px;
 text-decoration: none;
 }
 #img-carrito{
-    width: 5rem;
+    width: 5.5rem;
     padding: 7px;
     border-radius: 5px;
 }

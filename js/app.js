@@ -16,6 +16,12 @@ function registrarEvento() {
     limpiarCarritoPrevio();
     eliminarVista();
   });
+  document.addEventListener('DOMContentLoaded', ()=>{
+    llenandoCarrito=JSON.parse(localStorage.getItem('llenandoCarrito')) || [];
+    console.log(llenandoCarrito);
+    bgBlue();
+    generarHtmlEnCarrito();
+  })
 }
 function seleccionandoCurso(e) {
   e.preventDefault();
@@ -79,11 +85,11 @@ function leerDatosCursoSeleccionado(cursoSeleccionado) {
     //agregar curso al carrito
     llenandoCarrito = [...llenandoCarrito, infoCursoSeleccionado];
   }
-  bgred();
+  bgBlue();
 
   generarHtmlEnCarrito();
 }
-function bgred() {
+function bgBlue() {
   const red = llenandoCarrito.length;
   if (red >= 0) {
     const bg = document.querySelector("#img-carrito");
@@ -126,6 +132,7 @@ function generarHtmlEnCarrito() {
 
     tablaDeCarrito.appendChild(tr);
   });
+  sincronizarStorage();
   contadores();
 }
 function limpiarCarritoPrevio() {
@@ -161,4 +168,7 @@ function vistaContador(sum) {
     `;
     contador.appendChild(p);
   }
+}
+function sincronizarStorage(){
+  localStorage.setItem('llenandoCarrito', JSON.stringify(llenandoCarrito));
 }

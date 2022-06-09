@@ -18,9 +18,11 @@ function registrarEvento() {
   });
   document.addEventListener('DOMContentLoaded', ()=>{
     llenandoCarrito=JSON.parse(localStorage.getItem('llenandoCarrito')) || [];
-    console.log(llenandoCarrito);
+   if(llenandoCarrito.length > 0){
     bgBlue();
     generarHtmlEnCarrito();
+    return;
+   }
   })
 }
 function seleccionandoCurso(e) {

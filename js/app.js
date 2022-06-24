@@ -18,7 +18,7 @@ function registrarEvento() {
   document.addEventListener('DOMContentLoaded', ()=>{
     llenandoCarrito=JSON.parse(localStorage.getItem('llenandoCarrito')) || [];
     if(llenandoCarrito.length > 0){
-    bgBlue();
+    bgWhite();
     generarHtmlEnCarrito();
     return;
    }

@@ -6,7 +6,6 @@ const contador = document.querySelector("#contador");
 let llenandoCarrito = [];
 
 registrarEvento();
-
 function registrarEvento() {
   ListaDeCursos.addEventListener("click", seleccionandoCurso);
   Carrito.addEventListener("click", eliminarCurso);
@@ -18,7 +17,7 @@ function registrarEvento() {
   });
   document.addEventListener('DOMContentLoaded', ()=>{
     llenandoCarrito=JSON.parse(localStorage.getItem('llenandoCarrito')) || [];
-   if(llenandoCarrito.length > 0){
+    if(llenandoCarrito.length > 0){
     bgBlue();
     generarHtmlEnCarrito();
     return;
@@ -32,7 +31,6 @@ function seleccionandoCurso(e) {
     leerDatosCursoSeleccionado(cursoSeleccionado);
   }
 }
-
 function eliminarCurso(e) {
   const claseBorrar = e.target.classList.contains("borrar-curso");
   if (claseBorrar) {
@@ -88,21 +86,19 @@ function leerDatosCursoSeleccionado(cursoSeleccionado) {
     llenandoCarrito = [...llenandoCarrito, infoCursoSeleccionado];
   }
   bgBlue();
-
   generarHtmlEnCarrito();
 }
 function bgBlue() {
-  const red = llenandoCarrito.length;
-  if (red >= 0) {
     const bg = document.querySelector("#img-carrito");
     bg.style.backgroundColor = "#1EAEDB";
-  }
+    const comprar = document.querySelector('#comprar');
+    comprar.style.display = "block";
 }
 function bgWhite() {
-  if (llenandoCarrito.length === 0) {
     const bgw = document.querySelector("#img-carrito");
     bgw.style.backgroundColor = "white";
-  }
+    const comprar = document.querySelector('#comprar');
+    comprar.style.display = "none";
 }
 
 function generarHtmlEnCarrito() {

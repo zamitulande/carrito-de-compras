@@ -88,19 +88,24 @@ function leerDatosCursoSeleccionado(cursoSeleccionado) {
   bgBlue();
   generarHtmlEnCarrito();
 }
+
 function bgBlue() {
+  const red = llenandoCarrito.length;
+  if (red >= 0) {
     const bg = document.querySelector("#img-carrito");
     bg.style.backgroundColor = "#1EAEDB";
     const comprar = document.querySelector('#comprar');
     comprar.style.display = "block";
+  }
 }
 function bgWhite() {
+  if (llenandoCarrito.length === 0) {
     const bgw = document.querySelector("#img-carrito");
     bgw.style.backgroundColor = "white";
     const comprar = document.querySelector('#comprar');
     comprar.style.display = "none";
+  }
 }
-
 function generarHtmlEnCarrito() {
   limpiarCarritoPrevio();
 
